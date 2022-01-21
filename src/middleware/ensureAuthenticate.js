@@ -18,7 +18,6 @@ function ensureAuthenticate(request , response , next){
     const {sub} = verify(token , process.env.JWT_PASS)
 
     request.user_id = sub   
-    console.log('chegou aqui')
     return next()
 
   }catch(err){

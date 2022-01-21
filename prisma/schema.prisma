@@ -13,4 +13,15 @@ model User {
   name     String
   email    String
   password String
+
+  class Class[]
+}
+
+model Class {
+  id          String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  date        DateTime @default(now())
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    String?  @db.ObjectId
 }
